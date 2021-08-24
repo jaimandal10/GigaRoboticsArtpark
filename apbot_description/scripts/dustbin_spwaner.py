@@ -26,8 +26,8 @@ if __name__ == '__main__':
     spawn_pose = Pose()
 
     # Spawn the new model #
-    model_path_green = "/artpark_workspace/src/GigaRoboticsArtpark/artpark2021_world/models/dustbins/Dustbin_Green_Cylinder"
-    model_path_yellow = "/artpark_workspace/src/GigaRoboticsArtpark/artpark2021_world/models/dustbins/Dustbin_Black_Cylinder"
+    model_path_green = "/home/jai/catkin_ws/src/giga_robotics_artpark/artpark2021_world/models/dustbins/Dustbin_Green_Cylinder"
+    model_path_yellow = "/home/jai/catkin_ws/src/giga_robotics_artpark/artpark2021_world/models/dustbins/Dustbin_Black_Cylinder"
     model_xml_green = ''
     model_xml_yellow = ''
 
@@ -47,11 +47,10 @@ if __name__ == '__main__':
         except:
             print("Invald input\n")
 
-    dustbin_poses = [(-1,.5),(-1.5,.5),(-2,.5),(-2.5,.5),(-2.5,1),(-2.5,1.5),(-2.8,2),(-2.8,2.5),(-1.6,2.8),(-1,2.8)]
+    dustbin_poses = [(-1.3,0),(-.2,1.3),(1.3,.23),(-1.3,.85)]
     for i in range(numBins):
         qaut_angle = quaternion_from_euler(0, 0, 0)
-        rand_dustbin = random.randrange(10-i)
-        (spawn_pose.position.x,spawn_pose.position.y) = dustbin_poses.pop(rand_dustbin)
+        (spawn_pose.position.x,spawn_pose.position.y) = dustbin_poses[i]
         spawn_pose.position.z = .6
         spawn_pose.orientation.x = qaut_angle[0]
         spawn_pose.orientation.y = qaut_angle[1]
